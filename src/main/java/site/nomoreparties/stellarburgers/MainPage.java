@@ -22,18 +22,18 @@ public class MainPage {
     @FindBy(how = How.XPATH, using = "//*[text() = 'Оформить заказ']")
     private WebElement orderButton;
 
-    @FindBy(how = How.XPATH, using = "//p[text() = 'Личный Кабинет']")
-    private WebElement personalAccountLink;
+    @FindBy(how = How.CLASS_NAME, using = "BurgerIngredients_ingredients__1N8v2")
+    private WebElement constructorSection;
 
     public boolean isLoggedIn() {
         return orderButton.isDisplayed();
     }
 
-    public void clickOnLoginButton() {
-        loginButton.click();
+    public boolean isConstructorLoaded() {
+        return constructorSection.isDisplayed();
     }
 
-    public void clickOnPersonalAccountLink() {
-        personalAccountLink.click();
+    public void clickOnLoginButton() {
+        loginButton.click();
     }
 }

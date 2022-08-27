@@ -17,7 +17,14 @@ public class PersonalAccountPage {
     @FindBy(how = How.CLASS_NAME, using = "Profile_profile__3dzvr")
     private WebElement userInfo;
 
+    @FindBy(how = How.XPATH, using = "//button[text() = 'Выход']")
+    private WebElement logoutButton;
+
     public boolean isPageLoaded() {
         return userInfo.isDisplayed();
+    }
+
+    public void logout() {
+        logoutButton.click();
     }
 }
