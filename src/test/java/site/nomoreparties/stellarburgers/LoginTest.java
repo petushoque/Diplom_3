@@ -9,6 +9,7 @@ public class LoginTest {
 
     private MainPage mainPage;
     private LoginPage loginPage;
+    private RegisterPage registerPage;
     private WebDriver driver;
     private User user;
 
@@ -18,17 +19,35 @@ public class LoginTest {
         driver = new ChromeDriver();
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
+        registerPage = new RegisterPage(driver);
         user = new User();
         user.setEmail("howdoyoudo@email.com");
         user.setPassword("qwerty12");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(ConfProperties.getProperty("mainpage"));
     }
 
     @Test
     public void loginViaLoginButtonOnMainPageTest() {
+        driver.get(ConfProperties.getProperty("mainpage"));
         mainPage.clickOnLoginButton();
+        loginPage.login(user);
+        Assert.assertTrue(mainPage.isLoggedIn());
+        System.out.println("The user is successfully logged in");
+    }
+
+    @Test
+    public void loginViaPersonalAccountTest() {
+        driver.get(ConfProperties.getProperty("accountpage"));
+        loginPage.login(user);
+        Assert.assertTrue(mainPage.isLoggedIn());
+        System.out.println("The user is successfully logged in");
+    }
+
+    @Test
+    public void loginViaRegistrationPageTest() {
+        driver.get(ConfProperties.getProperty("registerpage"));
+        registerPage.clickOnLoginLink();
         loginPage.login(user);
         Assert.assertTrue(mainPage.isLoggedIn());
         System.out.println("The user is successfully logged in");

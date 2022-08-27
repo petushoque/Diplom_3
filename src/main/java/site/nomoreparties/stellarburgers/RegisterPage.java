@@ -26,6 +26,9 @@ public class RegisterPage {
     @FindBy(how = How.CLASS_NAME, using = "button_button__33qZ0")
     private WebElement registerButton;
 
+    @FindBy(how = How.CLASS_NAME, using = "Auth_link__1fOlj")
+    private WebElement loginLink;
+
     @FindBy(how = How.CLASS_NAME, using = "input__error")
     private WebElement invalidPasswordErrorMessage;
 
@@ -50,5 +53,9 @@ public class RegisterPage {
 
     public boolean isErrorMessageVisible() {
         return invalidPasswordErrorMessage.isDisplayed();
+    }
+
+    public void clickOnLoginLink() {
+        loginLink.click();
     }
 }
