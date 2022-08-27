@@ -1,24 +1,34 @@
 package site.nomoreparties.stellarburgers;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     private String username;
     private String email;
     private String password;
 
-    public User(String username, String email, String password) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
+    public void setRandom() {
+        this.username = RandomStringUtils.randomAlphanumeric(8);
+        this.email = RandomStringUtils.randomAlphanumeric(8) + "@gmail.com";
+        this.password = RandomStringUtils.randomAlphanumeric(8);
     }
 
-    public User getRandom() {
-        String username = RandomStringUtils.randomAlphanumeric(8);
-        String email = RandomStringUtils.randomAlphanumeric(8) + "@gmail.com";
-        String password = RandomStringUtils.randomAlphanumeric(8);
+    public String getUsername() {
+        return username;
+    }
 
-        return new User(username, email, password);
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }
