@@ -1,44 +1,32 @@
 package site.nomoreparties.stellarburgers;
 
-import org.junit.After;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import static com.codeborne.selenide.Selenide.open;
-
+import java.util.concurrent.TimeUnit;
 public class LoginTest {
 
-    private WebDriver driver;
-    //private MainPage mainPage;
+    public static MainPage mainPage;
+    public static LoginPage loginPage;
+    public static WebDriver driver;
 
-    //@Test
-    //public void LoginByLoginButtonOnMainPageTest() {
-    //    MainPage mainPage = open(MainPage.MAIN_PAGE_URL, MainPage.class);
-    //    mainPage.loginViaLoginButtonOnMainPage();
-    //}
+    @Before
+    public void setup() {
+        System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
+        driver = new ChromeDriver();
+        mainPage = new MainPage(driver);
+        loginPage = new LoginPage(driver);
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get(ConfProperties.getProperty("mainpage")); }
 
     @Test
-    public void test() {
-        ChromeDriver driver = new ChromeDriver();
-        //driver.manage().window().maximize();
-
-        driver.get("www.google.com");
+    public void loginTest() {
+        mainPage.loginViaLoginButtonOnMainPage();
+        loginPage.login("howdoyoudo@email.com", "qwerty12");
+        Assert.assertTrue(mainPage.isLoggedIn());
     }
-    //@Test
-    //public void enterAccountButtonTest() {
-
-        //mainPage.clickEnterAccountButtonMainPage();
-        //assertTrue(loginPage.enterButtonLoginPageIsDisplayed());
-        //loginPage.setEmailInputLoginPage("ds@gmail.com");
-        //loginPage.setPasswordInputFieldLoginPage("Qwer1234");
-        //loginPage.clickEnterButtonLoginPage();
-        //assertTrue(mainPage.createOrderButtonMainPageIsDisplayed());
-    //}
 
     @After
     public void tearDown() {
-        driver.quit();
-    }
-
-}
+        driver.quit(); } }

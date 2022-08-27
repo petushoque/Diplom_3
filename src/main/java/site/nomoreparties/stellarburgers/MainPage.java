@@ -1,36 +1,36 @@
 package site.nomoreparties.stellarburgers;
 
-import com.codeborne.selenide.SelenideElement;
+import lombok.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.PageFactory;
 
-import java.time.Duration;
-
+//@Data
 public class MainPage {
 
-    private final WebDriver driver;
-    public static final String MAIN_PAGE_URL = "https://stellarburgers.nomoreparties.site/";
-
-    //private final By loginToAccountButton = By.className("button_button__33qZ0");
-
-    @FindBy(how = How.CLASS_NAME, using = "button_button__33qZ0")
-    private SelenideElement loginToAccountButton;
-
+    public WebDriver driver;
     public MainPage(WebDriver driver) {
-        this.driver = driver;
+        PageFactory.initElements(driver, this);
+        this.driver = driver; }
+
+    @FindBy(how = How.XPATH, using = "//*[text() = 'Войти в аккаунт']")
+    private WebElement loginButton;
+
+    @FindBy(how = How.XPATH, using = "//*[text() = 'Оформить заказ']")
+    private WebElement orderButton;
+
+    public boolean isLoggedIn() {
+        return orderButton.isDisplayed();
     }
 
-    public void waitForLoadMainPage() {
-        // ждем 8 секунд, пока появится веб-элемент с нужным текстом
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated((By) loginToAccountButton));
+    public void clickOnLoginToAccountButton() {
+        loginButton.click();
     }
 
     public void loginViaLoginButtonOnMainPage() {
-        this.loginToAccountButton.click();
+        clickOnLoginToAccountButton();
     }
 }
