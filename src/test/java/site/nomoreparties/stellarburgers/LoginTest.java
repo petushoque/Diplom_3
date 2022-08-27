@@ -10,6 +10,7 @@ public class LoginTest {
     private MainPage mainPage;
     private LoginPage loginPage;
     private RegisterPage registerPage;
+    private ForgotPasswordPage forgotPasswordPage;
     private WebDriver driver;
     private User user;
 
@@ -20,6 +21,7 @@ public class LoginTest {
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
         registerPage = new RegisterPage(driver);
+        forgotPasswordPage = new ForgotPasswordPage(driver);
         user = new User();
         user.setEmail("howdoyoudo@email.com");
         user.setPassword("qwerty12");
@@ -48,6 +50,15 @@ public class LoginTest {
     public void loginViaRegistrationPageTest() {
         driver.get(ConfProperties.getProperty("registerpage"));
         registerPage.clickOnLoginLink();
+        loginPage.login(user);
+        Assert.assertTrue(mainPage.isLoggedIn());
+        System.out.println("The user is successfully logged in");
+    }
+
+    @Test
+    public void loginViaForgotPasswordPageTest() {
+        driver.get(ConfProperties.getProperty("forgotpasswordpage"));
+        forgotPasswordPage.clickOnLoginLink();
         loginPage.login(user);
         Assert.assertTrue(mainPage.isLoggedIn());
         System.out.println("The user is successfully logged in");
