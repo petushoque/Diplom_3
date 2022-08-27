@@ -26,11 +26,7 @@ public class MainPage {
         return orderButton.isDisplayed();
     }
 
-    public void clickOnLoginToAccountButton() {
+    public void clickOnLoginButton() {
         loginButton.click();
-    }
-
-    public void loginViaLoginButtonOnMainPage() {
-        clickOnLoginToAccountButton();
     }
 }
