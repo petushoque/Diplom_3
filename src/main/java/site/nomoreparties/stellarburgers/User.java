@@ -14,10 +14,15 @@ public class User {
     private String email;
     private String password;
 
-    public void setRandom() {
+    public void setRandom(boolean isValidPassword) {
         this.username = RandomStringUtils.randomAlphanumeric(8);
         this.email = RandomStringUtils.randomAlphanumeric(8) + "@gmail.com";
-        this.password = RandomStringUtils.randomAlphanumeric(8);
+        if (isValidPassword) {
+            this.password = RandomStringUtils.randomAlphanumeric(8);
+        }
+        else {
+            this.password = RandomStringUtils.randomAlphanumeric(4);
+        }
     }
 
     public String getUsername() {

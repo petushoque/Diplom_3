@@ -13,6 +13,9 @@ public class LoginPage {
         this.driver = driver;
     }
 
+    @FindBy(how = How.TAG_NAME, using = "h2")
+    private WebElement title;
+
     @FindBy(how = How.NAME, using = "name")
     private WebElement emailField;
 
@@ -35,5 +38,9 @@ public class LoginPage {
         inputEmail(email);
         inputPassword(password);
         loginButton.click();
+    }
+
+    public boolean isPageLoaded() {
+        return title.isDisplayed();
     }
 }

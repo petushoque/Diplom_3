@@ -26,6 +26,9 @@ public class RegisterPage {
     @FindBy(how = How.CLASS_NAME, using = "button_button__33qZ0")
     private WebElement registerButton;
 
+    @FindBy(how = How.CLASS_NAME, using = "input__error")
+    private WebElement invalidPasswordErrorMessage;
+
     public void inputName(String name) {
         nameField.sendKeys(name);
     }
@@ -43,5 +46,9 @@ public class RegisterPage {
         inputEmail(user.getEmail());
         inputPassword(user.getPassword());
         registerButton.click();
+    }
+
+    public boolean isErrorMessageVisible() {
+        return invalidPasswordErrorMessage.isDisplayed();
     }
 }
