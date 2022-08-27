@@ -36,10 +36,4 @@ public class LoginPage {
         inputPassword(password);
         loginButton.click();
     }
-
-    //public void inputPasswd(String passwd) {
-    //    passwdField.sendKeys(passwd); }
-
-    //public void clickLoginBtn() {
-    //    loginBtn.click(); }
 }

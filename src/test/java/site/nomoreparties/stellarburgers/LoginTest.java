@@ -18,15 +18,19 @@ public class LoginTest {
         loginPage = new LoginPage(driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(ConfProperties.getProperty("mainpage")); }
+        driver.get(ConfProperties.getProperty("mainpage"));
+    }
 
     @Test
     public void loginTest() {
         mainPage.loginViaLoginButtonOnMainPage();
         loginPage.login("howdoyoudo@email.com", "qwerty12");
         Assert.assertTrue(mainPage.isLoggedIn());
+        System.out.println("The user is successfully logged in");
     }
 
     @After
     public void tearDown() {
-        driver.quit(); } }
+        driver.quit();
+    }
+}
