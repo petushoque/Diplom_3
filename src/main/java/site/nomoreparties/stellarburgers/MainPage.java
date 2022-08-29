@@ -2,6 +2,7 @@ package site.nomoreparties.stellarburgers;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
@@ -34,27 +35,39 @@ public class MainPage {
     @FindBy(how = How.XPATH, using = "//span[text() = 'Соусы']")
     private WebElement saucesTab;
 
+    @FindBy(how = How.XPATH, using = "//h2[text() = 'Соусы']")
+    private WebElement saucesTitle;
+
     @FindBy(how = How.XPATH, using = "//div[contains(@class, 'BurgerIngredients_ingredients__menuContainer__Xu3Mo')]/ul[2]")
     private WebElement saucesSection;
 
     @FindBy(how = How.XPATH, using = "//span[text() = 'Начинки']")
     private WebElement fillingsTab;
 
+    @FindBy(how = How.XPATH, using = "//h2[text() = 'Начинки']")
+    private WebElement fillingsTitle;
+
     @FindBy(how = How.XPATH, using = "//div[contains(@class, 'BurgerIngredients_ingredients__menuContainer__Xu3Mo')]/ul[3]")
     private WebElement fillingsSection;
 
     public boolean isBreadsLoaded() {
-        //new Actions(driver)
-        //        .scrollToElement(breadsTitle)
-        //        .perform();
+        new Actions(driver)
+                .scrollToElement(breadsTitle)
+                .perform();
         return this.breadsSection.isDisplayed();
     }
 
     public boolean isSaucesLoaded() {
+        new Actions(driver)
+                .scrollToElement(saucesTitle)
+                .perform();
         return this.saucesSection.isDisplayed();
     }
 
     public boolean isFillingsLoaded() {
+        new Actions(driver)
+                .scrollToElement(fillingsSection)
+                .perform();
         return this.fillingsSection.isDisplayed();
     }
 

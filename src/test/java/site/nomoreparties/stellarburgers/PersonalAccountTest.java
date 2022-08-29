@@ -18,6 +18,11 @@ public class PersonalAccountTest {
     public void setup() {
         System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
         driver = new ChromeDriver();
+        // === Replace the first two lines with these for testing in firebox ===
+        /*
+        System.setProperty("webdriver.firefox.driver", ConfProperties.getProperty("geckodriver"));
+        driver = new FirefoxDriver();
+        */
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
         personalAccountPage = new PersonalAccountPage(driver);
@@ -58,7 +63,7 @@ public class PersonalAccountTest {
 
     @Test
     public void logoutTest() {
-        driver.get(ConfProperties.getProperty("accountpage"));
+        header.clickOnPersonalAccountLink();
         personalAccountPage.logout();
         driver.get(ConfProperties.getProperty("mainpage"));
         Assert.assertTrue(mainPage.isLoggedIn());

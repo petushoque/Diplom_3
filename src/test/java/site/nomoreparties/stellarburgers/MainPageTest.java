@@ -3,6 +3,8 @@ package site.nomoreparties.stellarburgers;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
 import java.util.concurrent.TimeUnit;
 
 public class MainPageTest {
@@ -14,6 +16,11 @@ public class MainPageTest {
     public void setup() {
         System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
         driver = new ChromeDriver();
+        // === Replace the first two lines with these for testing in firebox ===
+        /*
+        System.setProperty("webdriver.firefox.driver", ConfProperties.getProperty("geckodriver"));
+        driver = new FirefoxDriver();
+        */
         mainPage = new MainPage(driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -27,13 +34,13 @@ public class MainPageTest {
 
     @Test
     public void isSaucesDisplayedTest() {
-        mainPage.openTab("Соусы");
+        //mainPage.openTab("Соусы");
         mainPage.isSaucesLoaded();
     }
 
     @Test
     public void isFillingsDisplayedTest() {
-        mainPage.openTab("Начинки");
+        //mainPage.openTab("Начинки");
         mainPage.isFillingsLoaded();
     }
 

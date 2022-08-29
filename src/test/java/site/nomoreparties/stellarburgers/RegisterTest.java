@@ -16,6 +16,11 @@ public class RegisterTest {
     public void setup() {
         System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
         driver = new ChromeDriver();
+        // === Replace the first two lines with these for testing in firebox ===
+        /*
+        System.setProperty("webdriver.firefox.driver", ConfProperties.getProperty("geckodriver"));
+        driver = new FirefoxDriver();
+        */
         registerPage = new RegisterPage(driver);
         loginPage = new LoginPage(driver);
         driver.manage().window().maximize();

@@ -18,6 +18,11 @@ public class LoginTest {
     public void setup() {
         System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
         driver = new ChromeDriver();
+        // === Replace the first two lines with these for testing in firebox ===
+        /*
+        System.setProperty("webdriver.firefox.driver", ConfProperties.getProperty("geckodriver"));
+        driver = new FirefoxDriver();
+        */
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
         registerPage = new RegisterPage(driver);
