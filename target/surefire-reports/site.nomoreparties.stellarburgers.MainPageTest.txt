@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: site.nomoreparties.stellarburgers.MainPageTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.551 s - in site.nomoreparties.stellarburgers.MainPageTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.622 s - in site.nomoreparties.stellarburgers.MainPageTest
