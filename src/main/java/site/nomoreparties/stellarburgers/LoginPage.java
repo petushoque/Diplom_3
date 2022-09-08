@@ -1,5 +1,6 @@
 package site.nomoreparties.stellarburgers;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,21 +26,24 @@ public class LoginPage {
     @FindBy(how = How.CLASS_NAME, using = "button_button__33qZ0")
     private WebElement loginButton;
 
-
+    @Step("Input email")
     public void inputEmail(String email) {
         emailField.sendKeys(email);
     }
 
+    @Step("Input password")
     public void inputPassword(String password) {
         passwordField.sendKeys(password);
     }
 
+    @Step("Login")
     public void login(User user) {
         inputEmail(user.getEmail());
         inputPassword(user.getPassword());
         loginButton.click();
     }
 
+    @Step("Page is loaded")
     public boolean isPageLoaded() {
         return title.isDisplayed();
     }

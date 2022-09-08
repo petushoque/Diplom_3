@@ -1,5 +1,6 @@
 package site.nomoreparties.stellarburgers;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,14 +24,17 @@ public class Header {
     @FindBy(how = How.CLASS_NAME, using = "AppHeader_header__logo__2D0X2")
     private WebElement stellarsBurgersLogo;
 
+    @Step("Click on constructor link")
     public void clickOnConstructorLink() {
         constructorLink.click();
     }
 
+    @Step("Click on personal account link")
     public void clickOnPersonalAccountLink() {
         personalAccountLink.click();
     }
 
+    @Step("Click on logo")
     public void clickOnStellarsBurgersLogo() {
         stellarsBurgersLogo.click();
     }

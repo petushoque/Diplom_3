@@ -1,5 +1,6 @@
 package site.nomoreparties.stellarburgers;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,18 +33,22 @@ public class RegisterPage {
     @FindBy(how = How.CLASS_NAME, using = "input__error")
     private WebElement invalidPasswordErrorMessage;
 
+    @Step("Input name")
     public void inputName(String name) {
         nameField.sendKeys(name);
     }
 
+    @Step("Input email")
     public void inputEmail(String email) {
         emailField.sendKeys(email);
     }
 
+    @Step("Input password")
     public void inputPassword(String password) {
         passwordField.sendKeys(password);
     }
 
+    @Step("Register")
     public void register(User user) {
         inputName(user.getUsername());
         inputEmail(user.getEmail());
@@ -51,10 +56,12 @@ public class RegisterPage {
         registerButton.click();
     }
 
+    @Step("Error message is visible")
     public boolean isErrorMessageVisible() {
         return invalidPasswordErrorMessage.isDisplayed();
     }
 
+    @Step("Click on login link")
     public void clickOnLoginLink() {
         loginLink.click();
     }

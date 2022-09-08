@@ -1,5 +1,6 @@
 package site.nomoreparties.stellarburgers;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,10 +21,12 @@ public class PersonalAccountPage {
     @FindBy(how = How.XPATH, using = "//button[text() = 'Выход']")
     private WebElement logoutButton;
 
+    @Step("Page is loaded")
     public boolean isPageLoaded() {
         return userInfo.isDisplayed();
     }
 
+    @Step("Logout")
     public void logout() {
         logoutButton.click();
     }

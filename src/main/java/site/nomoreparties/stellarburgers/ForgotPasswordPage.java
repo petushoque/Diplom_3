@@ -1,5 +1,6 @@
 package site.nomoreparties.stellarburgers;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +18,7 @@ public class ForgotPasswordPage {
     @FindBy(how = How.CLASS_NAME, using = "Auth_link__1fOlj")
     private WebElement loginLink;
 
+    @Step("Click on login button")
     public void clickOnLoginLink() {
         loginLink.click();
     }
