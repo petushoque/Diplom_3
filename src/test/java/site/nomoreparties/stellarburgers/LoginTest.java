@@ -1,5 +1,6 @@
 package site.nomoreparties.stellarburgers;
 
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -35,6 +36,7 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Login via Login button on Main Page")
     public void loginViaLoginButtonOnMainPageTest() {
         driver.get(ConfProperties.getProperty("mainpage"));
         mainPage.clickOnLoginButton();
@@ -44,6 +46,7 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Login via Personal Account")
     public void loginViaPersonalAccountTest() {
         driver.get(ConfProperties.getProperty("accountpage"));
         loginPage.login(user);
@@ -52,6 +55,7 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Login via Registration Page")
     public void loginViaRegistrationPageTest() {
         driver.get(ConfProperties.getProperty("registerpage"));
         registerPage.clickOnLoginLink();
@@ -61,6 +65,7 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Login via Forgot Password Page")
     public void loginViaForgotPasswordPageTest() {
         driver.get(ConfProperties.getProperty("forgotpasswordpage"));
         forgotPasswordPage.clickOnLoginLink();

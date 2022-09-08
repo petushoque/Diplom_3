@@ -1,5 +1,6 @@
 package site.nomoreparties.stellarburgers;
 
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -37,6 +38,7 @@ public class PersonalAccountTest {
     }
 
     @Test
+    @DisplayName("Open Personal Account from Main Page")
     public void openPersonalAccountFromMainPageTest() {
         header.clickOnPersonalAccountLink();
         Assert.assertTrue(personalAccountPage.isPageLoaded());
@@ -44,6 +46,7 @@ public class PersonalAccountTest {
     }
 
     @Test
+    @DisplayName("Open constructor by click on constructor link")
     public void openConstructorByClickOnConstructorLinkTest() {
         driver.get(ConfProperties.getProperty("accountpage"));
         System.out.println("The personal account page has opened");
@@ -53,6 +56,7 @@ public class PersonalAccountTest {
     }
 
     @Test
+    @DisplayName("Open constructor by click on logo")
     public void openConstructorByClickOnLogoTest() {
         driver.get(ConfProperties.getProperty("accountpage"));
         System.out.println("The personal account page has opened");
@@ -62,6 +66,7 @@ public class PersonalAccountTest {
     }
 
     @Test
+    @DisplayName("Logout")
     public void logoutTest() {
         header.clickOnPersonalAccountLink();
         personalAccountPage.logout();

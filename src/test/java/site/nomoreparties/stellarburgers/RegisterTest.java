@@ -1,5 +1,6 @@
 package site.nomoreparties.stellarburgers;
 
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -29,6 +30,7 @@ public class RegisterTest {
     }
 
     @Test
+    @DisplayName("Register with correct data")
     public void correctDataRegisterTest() {
         user = new User();
         user.setRandom(true);
@@ -38,6 +40,7 @@ public class RegisterTest {
     }
 
     @Test
+    @DisplayName("Register with invalid password")
     public void invalidPasswordRegisterTest() {
         user = new User();
         user.setRandom(false);

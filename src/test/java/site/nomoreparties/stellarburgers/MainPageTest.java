@@ -1,5 +1,6 @@
 package site.nomoreparties.stellarburgers;
 
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -28,17 +29,20 @@ public class MainPageTest {
     }
 
     @Test
+    @DisplayName("Breads are displayed")
     public void isBreadsDisplayedTest() {
         mainPage.isBreadsLoaded();
     }
 
     @Test
+    @DisplayName("Sauces are displayed")
     public void isSaucesDisplayedTest() {
         //mainPage.openTab("Соусы");
         mainPage.isSaucesLoaded();
     }
 
     @Test
+    @DisplayName("Fillings are displayed")
     public void isFillingsDisplayedTest() {
         //mainPage.openTab("Начинки");
         mainPage.isFillingsLoaded();
